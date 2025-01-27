@@ -1,0 +1,13 @@
+[build]
+  base = "Project/frontend"
+  command = "npm run build"
+  publish = "build"
+
+  # Directory for serverless functions
+  functions = "Project/netlify/functions"
+
+[[redirects]]
+  # Redirect API requests to serverless functions
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
