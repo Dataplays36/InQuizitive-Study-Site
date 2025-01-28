@@ -1,15 +1,16 @@
 {
   "name": "inquisitive-study-site",
   "version": "1.0.0",
-  "description": "...",
+  "description": "Description of your project",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
-    "cors": "^2.8.5"
+    "dotenv": "^10.0.0"  // Added dotenv for environment variable management
   },
   "author": "Your Name",
   "license": "ISC"
