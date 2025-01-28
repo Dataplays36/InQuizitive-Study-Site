@@ -8,9 +8,10 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mysql": "^2.18.1",
-    "dotenv": "^10.0.0"  // Added dotenv for environment variable management
+    "inquisitive-study-site": "file:",
+    "mysql": "^2.18.1"
   },
   "author": "Your Name",
   "license": "ISC"
