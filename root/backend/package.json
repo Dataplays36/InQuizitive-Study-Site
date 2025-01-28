@@ -1,9 +1,16 @@
 {
-  "dependencies": {
-    "express": "^4.21.2",
-    "mysql": "^2.18.1"
-  },
+  "name": "inquisitive-study-site",
+  "version": "1.0.0",
+  "description": "...",
+  "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js"
-  }
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "cors": "^2.8.5"
+  },
+  "author": "Your Name",
+  "license": "ISC"
 }
