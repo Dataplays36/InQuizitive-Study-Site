@@ -1,15 +1,21 @@
 require('dotenv').config();  // Load environment variables from .env file
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
+const path = require('path');
+
 const app = express();
 const port = process.env.PORT || 3001;
+
+// Serve static files from the 'frontend' directory
+app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 // MySQL Connection
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
+  
 });
 
 // Connect to MySQL
@@ -21,14 +27,7 @@ db.connect(err => {
   console.log('MySQL Connected...');
 });
 
-// Middleware
-app.use(express.json());
-
-// Simple route
-app.get('/', (req, res) => {
-  res.send('API is working');
-});
-
+// Start the server
 app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
+  console.log(`Server started successfully on port: ${port}`);
 });
