@@ -42,7 +42,7 @@ document.getElementById('test-login-btn').addEventListener('click', function() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: 'testuser', password: 'testpassword' }),
+        body: JSON.stringify({ username: 'testuser2', password: 'testpassword' }),
     })
     .then(response => response.text())
     .then(data => {
