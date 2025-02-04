@@ -1,18 +1,27 @@
+const path = require('path');
+
+// Change the working directory to the root of the repository
+process.chdir(path.resolve(__dirname, '../../'));
+
+require('dotenv').config();  // Load environment variables from .env file
+
+// Debugging output to check the current working directory and environment variables
+console.log('Current Working Directory:', process.cwd());
+console.log('DB_HOST:', process.env.DB_HOST);
+console.log('DB_USER:', process.env.DB_USER);
+console.log('DB_PASS:', process.env.DB_PASS);
+console.log('DB_NAME:', process.env.DB_NAME);
 
 const express = require('express');
 const mysql = require('mysql2');
-const path = require('path');
+
 
 const bodyParser = require('body-parser'); 
 const app = express();
 const port = process.env.PORT || 3001;
 
 
-console.log("database username" + process.env.DB_HOST);
-process.chdir(path.resolve(__dirname, '../../'));
-require('dotenv').config();  // Load environment variables from .env file
 
-console.log('Current Working Directory:', process.cwd());
 
 
 // Serve static files from the 'frontend' directory
