@@ -1,5 +1,5 @@
 require('dotenv').config();  // Load environment variables from .env file
-
+console.log("database username" + process.env.DB_HOST);
 
 const express = require('express');
 const mysql = require('mysql2');
