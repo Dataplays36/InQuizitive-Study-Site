@@ -1,7 +1,4 @@
 require('dotenv').config();  // Load environment variables from .env file
-console.log("database username" + process.env.DB_HOST);
-console.log('Current Working Directory:', process.cwd());
-
 
 const express = require('express');
 const mysql = require('mysql2');
@@ -10,6 +7,12 @@ const path = require('path');
 const bodyParser = require('body-parser'); 
 const app = express();
 const port = process.env.PORT || 3001;
+
+
+console.log("database username" + process.env.DB_HOST);
+process.chdir(path.resolve(__dirname, '../../'));
+console.log('Current Working Directory:', process.cwd());
+
 
 // Serve static files from the 'frontend' directory
 app.use(express.static(path.join(__dirname, '..', 'frontend')));
