@@ -1,4 +1,3 @@
-require('dotenv').config();  // Load environment variables from .env file
 
 const express = require('express');
 const mysql = require('mysql2');
@@ -11,6 +10,8 @@ const port = process.env.PORT || 3001;
 
 console.log("database username" + process.env.DB_HOST);
 process.chdir(path.resolve(__dirname, '../../'));
+require('dotenv').config();  // Load environment variables from .env file
+
 console.log('Current Working Directory:', process.cwd());
 
 
