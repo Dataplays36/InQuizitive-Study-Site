@@ -1,8 +1,6 @@
 require('dotenv').config();  // Load environment variables from .env file
-console.log(process.env.DB_HOST);
-console.log(process.env.DB_USER);
-console.log(process.env.DB_PASS);
-console.log(process.env.DB_NAME);
+
+
 const express = require('express');
 const mysql = require('mysql2');
 const path = require('path');
