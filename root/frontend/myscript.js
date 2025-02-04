@@ -34,3 +34,21 @@ function createAccount(){
 	
 	
 }
+
+//testing ability to add a username and password to the database
+document.getElementById('test-login-btn').addEventListener('click', function() {
+    fetch('/add-item', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: 'testuser', password: 'testpassword' }),
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('It worked');
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
