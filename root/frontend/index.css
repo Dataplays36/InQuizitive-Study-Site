@@ -1,206 +1,261 @@
-@media only screen and (min-width:512px){ 
-	/*
-	Allows for responsive design.
-	*/
-	
-	/* Resetting margins and paddings */
-	* {
-		margin: 0;
-		padding: 0;
-	}
-	
-	/* Body styles */
-	body {
-		font-family: Arial, sans-serif;
-		background-color: white;
-	}
-	
-	/* Header styles */
-	header {
-		width: 100%;
-	}
-	
-	/* Navbar styles */
-	nav {
-		background-color: #333;
-		width: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 65px;
-		display: flex;
-		z-index: 1000;
-		align-items: center;
-		justify-content: space-between;
-	}
-	
-	nav ul {
-		list-style-type: none;
-		display: flex;
-		align-items: center;
-	}
-	
-	nav ul li {
-		margin: 0 20px;
-	}
-	
-	nav ul li a {
-		color: white;
-		text-decoration: none;
-		font-size: 18px;
-		padding: 20px;
-		display: block;
-	}
-	
-	nav a:hover {
-		background-color: #575757;
-		transition: 0.3s;
-	}
-	
-	#login_signup {
-		color: white;
-		text-decoration: none;
-		font-size: 18px;
-		padding: 20px;
-		display: block;
-	}
-	
-	/* Search area styles */
-	#searcharea {
-		background-color: white;
-		width: 40%;
-		padding: 5px;
-		border-radius: 15px;
-		display: flex;
-	}
-	
-	/* Search bar styles */
-	#searchbar {
-		background-color: white;
-		width: 50%;
-		padding: 10px;
-		border-radius: 15px;
-		outline: none;
-	}
-	
-	/* Subheader styles */
-	.subheader {
-		display: flex;
-		margin-top: 65px;
-		width: 100%;
-		justify-content: center;
-		align-items: center;
-		background: #333;
-	}
-	
-	.subheader h1 {
-		color: white;
-		background: #333;
-		padding: 50px;
-	}
-	
-	/* Content styles */
-	.content {
-		margin-top: 80px;
-		text-align: center;
-		display: flex;
-		width: 100%;
-		height: 75vh;
-		align-content: center;
-	}
-	
-	.content p {
-		width: 100%;
-		text-align: center;
-	}
-	
-	/* Weekly updates styles */
-	.weeklyUpdates {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		height: 100%;
-	}
-	
-	#weeklyupdatedoc {
-		width: 80%;
-		height: 3000px;;
-		border: none;
-		overflow: hidden;
-		display: block;
-		margin: auto;
-	}
-	
-	#weeklyupdatepp {
-		width: 80%;
-		height: 100%;
-		border: none;
-		overflow: hidden;
-		display: block;
-		margin: auto;
-	}
-	
-	/* About section styles */
-	.about {
-		width: 80%;
-		text-align: center;
-		margin: auto;
-		padding: 30px;
-		color: white;
-		background: #333;
-		border-radius: 15px;
-		height: 80%;
-	}
-	
-	.about h2, p {
-		padding: 20px;
-	}
-	
-	/* User Sets and Viewed Sets styles */
-	#userSets, #viewedSets {
-		width: 50%;
-		padding: 10px;
-		margin: 25px;
-		background: #333;
-		border-radius: 15px;
-		color: white;
-	}
-	
-	/* Login section styles */
-	#login {
-		color: white;
-		margin: auto;
-		width: 20%;
-		background-color: #333;
-		padding: 30px;
-		border-radius: 15px;
-	}
-	
-	#login input {
-		padding: 10px;
-		border-radius: 15px;
-	}
-	
-	#login #username, #password {
-		width: 60%;
-	}
-	
-	#login a {
-		color: white;
-	}
-	
-	#login button {
-		padding: 10px;
-		border-radius: 15px;
-	}
-	
-	/* Footer styles */
-	footer {
-		background-color: #333;
-		width: 100%;
-		position: fixed;
-		height: 150px;
-	}
-	}
-	
+@media only screen and (min-width:512px) { 
+    /* Allows for responsive design */
+
+    /* Resetting margins and paddings */
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+    }
+
+    /* Header styles */
+    header {
+        width: 100%;
+    }
+
+    /* Navbar styles */
+    nav {
+        background-color: #333;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 65px;
+        display: flex;
+        z-index: 1000;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0 20px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 20px;
+        display: block;
+    }
+
+    nav a:hover {
+        background-color: #575757;
+        transition: 0.3s;
+    }
+
+    #login_signup {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 20px;
+        display: block;
+    }
+
+    /* Search area styles */
+    #searcharea {
+        background-color: white;
+        width: 40%;
+        padding: 5px;
+        border-radius: 15px;
+        display: flex;
+    }
+
+    /* Search bar styles */
+    #searchbar {
+        background-color: white;
+        width: 50%;
+        padding: 10px;
+        border-radius: 15px;
+        outline: none;
+    }
+
+    /* Subheader styles */
+    .subheader {
+        display: flex;
+        margin-top: 65px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        background: #333;
+    }
+
+    .subheader h1 {
+        color: white;
+        background: #333;
+        padding: 50px;
+    }
+
+    /* Content styles */
+    .content {
+        margin-top: 80px;
+        text-align: center;
+        display: flex;
+        width: 100%;
+        height: 75vh;
+        align-content: center;
+    }
+
+    .content p {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Weekly updates styles */
+    .weeklyUpdates {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: 100%;
+    }
+
+    #weeklyupdatedoc {
+        width: 80%;
+        height: 3000px;
+        border: none;
+        overflow: hidden;
+        display: block;
+        margin: auto;
+    }
+
+    #weeklyupdatepp {
+        width: 80%;
+        height: 100%;
+        border: none;
+        overflow: hidden;
+        display: block;
+        margin: auto;
+    }
+
+    /* About section styles */
+    .about {
+        width: 80%;
+        text-align: center;
+        margin: auto;
+        padding: 30px;
+        color: white;
+        background: #333;
+        border-radius: 15px;
+        height: 80%;
+    }
+
+    .about h2, p {
+        padding: 20px;
+    }
+
+    /* User Sets and Viewed Sets styles */
+    #userSets, #viewedSets {
+        width: 50%;
+        padding: 10px;
+        margin: 25px;
+        background: #333;
+        border-radius: 15px;
+        color: white;
+    }
+
+    /* Login section styles */
+    #login {
+        color: white;
+        margin: auto;
+        width: 30%; /* Match signup width */
+        background-color: #333;
+        padding: 30px;
+        border-radius: 15px;
+    }
+
+    #login input {
+        padding: 10px;
+        border-radius: 15px;
+        width: 80%; /* Match signup width */
+        display: block;
+        margin: 10px auto; /* Centered within the box */
+    }
+
+    #login button {
+        padding: 10px;
+        border-radius: 15px;
+        width: 80%;
+        display: block;
+        margin: 10px auto;
+    }
+
+    #login a {
+        color: white;
+        text-align: center;
+        display: block;
+        margin-top: 10px;
+    }
+
+    /* Sign-Up section styles */
+    #signup {
+        color: white;
+        margin: auto;
+        width: 30%; /* Wider signup area */
+        background-color: #333;
+        padding: 30px;
+        border-radius: 15px;
+    }
+
+    #signup input {
+        padding: 10px;
+        border-radius: 15px;
+        width: 80%; /* Narrower text bars */
+        display: block;
+        margin: 10px auto; /* Centered within the box */
+    }
+
+    #signup button {
+        padding: 10px;
+        border-radius: 15px;
+        width: 80%;
+        display: block;
+        margin: 10px auto;
+    }
+
+    #signup a {
+        color: white;
+        /* text-align: center;
+        display: block;
+        margin-top: 10px; */
+    }
+
+    .outer-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Full height of the viewport */
+    }
+    
+    /* Content container styles */
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centers the content vertically */
+        align-items: center; /* Centers the content horizontally */
+        flex-grow: 1;
+        padding: 20px;
+        height: calc(100vh - 150px); /* Adjust height considering the header and footer */
+    }
+
+    /* Footer styles */
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+}

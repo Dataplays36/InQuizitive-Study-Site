@@ -21,26 +21,6 @@
             flex-grow: 1;
             padding: 20px;
         }
-
-        .button-container {
-            display: flex;
-            justify-content: center; /* Centers horizontally */
-            align-items: center; /* Centers vertically */
-            position: fixed; /* Fixes the container to the bottom */
-            bottom: 0; /* Positions it at the bottom of the page */
-            width: 100%; /* Makes the container full width */
-            height: 100px; /* Adjust the height as needed */
-        }
-
-        #test-login-btn {
-            background-color: red;
-            color: white;
-            font-size: 24px; /* Makes the button text larger */
-            padding: 15px 30px; /* Increases the button size */
-            border: none; /* Removes the button border */
-            border-radius: 5px; /* Adds rounded corners */
-            cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
-        }
     </style>
 </head>
 <body>
@@ -51,7 +31,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="explore.html">Explore</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="weeklyUpdate.html">Weekly Updates</a></li>
+                    
                 </ul>
                 <input type="text" placeholder="search.." id="searchbar" onkeypress="clickPress(event)">
                 <a id="login_signup" href="login.html">Login/Sign Up</a>
@@ -69,19 +49,16 @@
                     <br><br>
                     <label>Password:</label>
                     <br><br>
-                    <input type="text" id="password" name="password">
+                    <input type="password" id="password" name="password">
                     <br><br>
                     <button id="submit" onclick="getInformation()">Login</button>
                 </form>
+                
                 <br>
                 <p>
-                    Don't have an account? <button id="signup">Sign Up</button>
-                </p>
+                    Don't have an account? <a href="signup.html">Sign Up</a>
+                </p>              
             </div>
-        </div>
-        <!-- New Test Login Button -->
-        <div class="button-container">
-            <button id="test-login-btn">Test Login</button>
         </div>
         <footer></footer>
     </div>
