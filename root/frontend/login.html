@@ -42,18 +42,18 @@
         </header>
         <div class="content-container">
             <div id="login">
-                <form>
+                <form id="loginForm">
                     <label>Username:</label>
                     <br><br>
-                    <input type="text" id="username" name="username">
+                    <input type="text" id="username" name="username" required>
                     <br><br>
                     <label>Password:</label>
                     <br><br>
-                    <input type="password" id="password" name="password">
+                    <input type="password" id="password" name="password" required>
                     <br><br>
-                    <button id="submit" onclick="getInformation()">Login</button>
+                    <button type="submit" id="submit">Login</button>
                 </form>
-                
+                <script src="login.js"></script>
                 <br>
                 <p>
                     Don't have an account? <a href="signup.html">Sign Up</a>

@@ -106,32 +106,62 @@ app.post('/add-user', (req, res) =>
   });
 });
 
-//route to handle user login 
+// Route to handle user login
 app.post('/login', async (req, res) => 
 {
-  const { username, password } = req.body;  //creates constants from passed request
-  const query = 'SELECT * FROM user_credentials WHERE username = ?';  //sql query to find entry with that username 
-  /*
-    for those without SQL experience: 
-      SELECT * tells the database to select all columns from the table.
-      FROM user_credentials specifies the table name you want to query from.
-      WHERE username = ? is a condition to filter the results, where the username must match the provided value.
-  */
-  db.query(query, [username], async (err, results) => //send query to database 
-  {
+  const { username, password } = req.body;  // creates constants from passed request
+  const query = 'SELECT * FROM user_credentials WHERE username = ?';  // SQL query to find entry with that username
+
+  db.query(query, [username], async (err, results) => 
+  {  // send query to database
+      console.log("checking username", username, "\nchecking password", password);
+
       if (err) 
       {
-          return res.status(500).send('Server error');
+          console.error('Database error:', err);  // log the error for debugging
+          return res.status(500).send('Server error');  // send server error response
       }
-      if (results.length === 0 || !await bcrypt.compare(password, results[0].password)) {
-          return res.status(401).send('Invalid username or password');
+
+      console.log("results length", results.length);
+      if (results.length === 0) 
+      {  // if no results found for the username
+          return res.status(401).send('Invalid username or password like for realz');  // send unauthorized response
+          console.log("results length", results.length);
       }
-      // Create session
+
+      // Uncomment and adjust this if password comparison is needed
+      // const match = await bcrypt.compare(password, results[0].password);
+      // if (!match) {
+      //     return res.status(401).send('Invalid username or password');
+      // }
+
+      // Create session only if results are valid
       req.session.user = results[0];
-      res.send('Login successful');
+      res.send('Login successful');  // send successful login response
   });
 });
 
+
+
+// User Logout Route
+app.post('/logout', (req, res) => {
+  req.session.destroy(err => {
+      if (err) {
+          return res.status(500).send('Server error');
+      }
+      res.send('Logout successful');
+  });
+});
+
+
+// Middleware to check if user is logged in
+function checkAuth(req, res, next) {
+  if (req.session.user) {
+      next();
+  } else {
+      res.status(401).send('Unauthorized');
+  }
+}
 
 
 // Start the server
@@ -140,4 +170,18 @@ app.listen(port, () => {
 });
 
 
+//simple protected route
+app.get('/profile', checkAuth, (req, res) => {
+  res.send(`Welcome, ${req.session.user.username}`);
+});
+
+
+// Route to check if user is authenticated
+app.get('/check-auth', (req, res) => {
+  if (req.session.user) {
+      res.json({ loggedIn: true, username: req.session.user.username });
+  } else {
+      res.json({ loggedIn: false });
+  }
+});
 
