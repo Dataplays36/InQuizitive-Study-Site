@@ -18,6 +18,22 @@ document.addEventListener('DOMContentLoaded', function() //makes sure the conten
             console.log('Username:', username);
             console.log('Password:', password);
 
+
+            /*gotta add some error stuff
+                > gonna try to handle the error checking up front before any data even reaches the database
+
+                > if bad data does get into the backend, we can check for error from sql and not fetch login route 
+                    something like:
+
+                        if(validUser && validPass)
+                            fetch(add-user)
+                                ...
+                                if(!sqlError)
+                                    fetch(login)
+                                ...
+            
+            */
+
             // Submit the data using fetch and the backend route 
             fetch('/add-user', 
             {
@@ -31,7 +47,28 @@ document.addEventListener('DOMContentLoaded', function() //makes sure the conten
             .then(data => 
             {
                 console.log('Success:', data);
-                // will eventually redirect to another page or display a success message
+
+                //assuming no issues, will fetch login, logging the new user in and directing them to the homepage 
+                fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username: username, password: password }),
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    if (data === 'Login successful') {
+                        window.location.href = 'index.html'; // Redirect to home page
+                        console.log("login worked")
+                    } else {
+                        alert(data); // Display error message
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
             })
             .catch((error) => {
                 console.error('Error:', error);

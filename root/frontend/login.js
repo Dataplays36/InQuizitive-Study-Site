@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() 
 {
     const loginForm = document.getElementById('loginForm');
+
     console.log("login.js is loaded");
 
-    if (loginForm) 
+    if (loginForm) //if the element is there 
     {
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault(); // Prevents the default form submission
@@ -11,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function()
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            fetch('/login', {
+            fetch('/login', 
+            {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -21,8 +23,9 @@ document.addEventListener('DOMContentLoaded', function()
             .then(response => response.text())
             .then(data => {
                 console.log(data);
-                if (data === 'Login successful') {
-                    //window.location.href = 'profile.html'; // Redirect to profile page
+                if (data === 'Login successful') 
+                {
+                    window.location.href = 'index.html'; // Redirect to home page
                     console.log("login worked")
                 } else {
                     alert(data); // Display error message

@@ -62,6 +62,12 @@ console.log('DB_NAME:', process.env.DB_NAME);
 app.use(bodyParser.json());
 
 
+
+
+
+
+
+
 /*
 ~~~~~~~~~~Functions and routes~~~~~~~~~~
 */
@@ -88,60 +94,84 @@ db.connect(err => {
 });
 
 // Route to handle adding a new user account
-app.post('/add-user', (req, res) => 
+app.post('/add-user', async (req, res) => 
 {
   const { username, password } = req.body;  //creates constants for username and password from passed in request
-  const query = 'INSERT INTO user_credentials (username, password) VALUES (?, ?)';  //creates query with those constants
-  db.query(query, [username, password], (err, results) => //sends that query, receiving errors and results
+  
+  try 
   {
-    if (err) //if an error is received from the db
+    const hashedPassword = await bcrypt.hash(password, 10);   //generates hashed password
+    const query = 'INSERT INTO user_credentials (username, password) VALUES (?, ?)';  //creates query looking for username and password params
+    db.query(query, [username, hashedPassword], (err, results) => //sends that query, receiving errors and results
     {
-      console.error('Error inserting user credentials:', err);
-      res.status(500).json({ error: 'Database error' });
-    } 
-    else 
-    {
-      res.status(200).json({ message: 'User credentials added successfully', userId: results.insertId });
-    }
-  });
+      if (err) //if an error is received from the db
+      {
+        console.error('Error inserting user credentials:', err);
+        res.status(500).json({ error: 'Database error' });
+      } 
+      else 
+      {
+        res.status(200).json({ message: 'User credentials added successfully', userId: results.insertId });
+      }
+    });
+  } catch (err) 
+  {
+    res.status(500).send('Server error');
+  }
 });
 
 // Route to handle user login
 app.post('/login', async (req, res) => 
 {
-  const { username, password } = req.body;  // creates constants from passed request
-  const query = 'SELECT * FROM user_credentials WHERE username = ?';  // SQL query to find entry with that username
-
+  const { username, password } = req.body;
+  const query = 'SELECT * FROM user_credentials WHERE username = ?'; //first queries to match entry with that username 
   db.query(query, [username], async (err, results) => 
-  {  // send query to database
-      console.log("checking username", username, "\nchecking password", password);
-
+  {
       if (err) 
       {
-          console.error('Database error:', err);  // log the error for debugging
-          return res.status(500).send('Server error');  // send server error response
+          return res.status(500).send('Server error');  //exits on error 
       }
-
-      console.log("results length", results.length);
       if (results.length === 0) 
-      {  // if no results found for the username
-          return res.status(401).send('Invalid username or password like for realz');  // send unauthorized response
-          console.log("results length", results.length);
+      {
+          return res.status(401).send('Invalid username or password');  //exits if no entry found 
+      }
+      const user = results[0];  //sets user to value of found username 
+      const isPasswordValid = await bcrypt.compare(password, user.password);  //using the hashing library, compares input password to stored password 
+      if (!isPasswordValid) {
+      
+          return res.status(401).send('Invalid username or password');  //if not valid, exits 
       }
 
-      // Uncomment and adjust this if password comparison is needed
-      // const match = await bcrypt.compare(password, results[0].password);
-      // if (!match) {
-      //     return res.status(401).send('Invalid username or password');
-      // }
-
-      // Create session only if results are valid
-      req.session.user = results[0];
-      res.send('Login successful');  // send successful login response
+      //after passing all those checks, a session is created, and the user is logged in, and success sent back to scripts in frontend
+      req.session.user = user;
+      res.send('Login successful');
   });
 });
 
 
+// Middleware to check if user is logged in
+function checkAuth(req, res, next) {
+  if (req.session.user) 
+  {
+      next(); //just making shure there's a session 
+  } else {
+      res.status(401).send('Unauthorized'); 
+  }
+}
+
+// Route to check if user is authenticated
+app.get('/check-auth', (req, res) => 
+  {
+  if (req.session.user) {
+      res.json({ loggedIn: true, username: req.session.user.username });
+  } else {
+      res.json({ loggedIn: false });
+  }
+});
+
+
+
+/*    Have not touched these yet, just have framework
 
 // User Logout Route
 app.post('/logout', (req, res) => {
@@ -154,14 +184,15 @@ app.post('/logout', (req, res) => {
 });
 
 
-// Middleware to check if user is logged in
-function checkAuth(req, res, next) {
-  if (req.session.user) {
-      next();
-  } else {
-      res.status(401).send('Unauthorized');
-  }
-}
+//simple protected route
+app.get('/profile', checkAuth, (req, res) => {
+  res.send(`Welcome, ${req.session.user.username}`);
+});
+
+
+*/
+
+
 
 
 // Start the server
@@ -170,18 +201,8 @@ app.listen(port, () => {
 });
 
 
-//simple protected route
-app.get('/profile', checkAuth, (req, res) => {
-  res.send(`Welcome, ${req.session.user.username}`);
-});
 
 
-// Route to check if user is authenticated
-app.get('/check-auth', (req, res) => {
-  if (req.session.user) {
-      res.json({ loggedIn: true, username: req.session.user.username });
-  } else {
-      res.json({ loggedIn: false });
-  }
-});
+
+
 

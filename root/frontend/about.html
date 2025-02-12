@@ -6,6 +6,12 @@
     <title>Inquisitive</title>
     <link rel="stylesheet" href="index.css">
 	<link rel="icon" type="image/jpeg" href="images/beanz.jpg">
+	<style>
+        /* Hide the elements initially */
+        #login_signup, #user-info {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 	<script src="myscript.js"></script>
@@ -19,6 +25,7 @@
 			</ul>
 			<input type="text" placeholder="search.." id="searchbar" onkeypress = clickPress(event)>
 			<a id="login_signup" href="login.html">Login/Sign Up</a>
+			<span id="user-info" style="display: none;"></span> <!-- Placeholder for user info -->
 		</nav>
 		<div class="subheader">
 			<h1>About Inquisitive</h1>
