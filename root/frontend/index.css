@@ -79,13 +79,11 @@ will figure out eventually
 
 /* Account Details/User Info styles */
     #user-info {
-        color: white;
-        margin: 10px;
-        /*background-color: #444; /* Slightly different background color for contrast */
-        padding: 10px;
-        border-radius: 5px;
-        text-align: center; /* Center the text */
-        font-size: 20px;
+        color: white;							/*makes the text white*/
+		text-decoration: none;					/*no idea*/
+		font-size: 18px;						/*changes the font size*/
+		padding: 20px;							/*adds 20 pixels of padding to the button*/
+		display: block;							/*makes the display block*/
     }
 
     #user-info a /*makes it so the text doesn't go purple bc it treats it as link*/
