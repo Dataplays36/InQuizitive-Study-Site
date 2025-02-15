@@ -250,7 +250,7 @@ will be moved to it's own file eventually
     const userInfoElement = document.getElementById('user-info');
 
     //function checking if user logged in and displaying correct button 
-    if (loginSignupElement && userInfoElement) //any page with these things will run this script  
+    if (loginSignupElement || userInfoElement) //any page with these things will run this script  
 	{
         fetch('/check-auth')
         .then(response => response.json())
@@ -266,7 +266,10 @@ will be moved to it's own file eventually
             }
         })
         .catch(error => console.error('Error:', error));
-    } else {
+    } 
+    else 
+    {
+        console.log(loginSignupElement, userInfoElement);
         console.error('Elements not found in the DOM');
     }
 //});

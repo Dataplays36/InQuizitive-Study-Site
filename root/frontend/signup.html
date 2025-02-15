@@ -23,6 +23,15 @@
             padding: 20px;
         }
     </style>
+    <style>
+        /* Hide the elements initially 
+        
+            the reason I hide both is to stop the website from flashing "login/signup" when switching tabs
+        */
+        #login_signup, #user-info {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="outer-container">
@@ -35,6 +44,7 @@
                 </ul>
                 <input type="text" placeholder="search.." id="searchbar" onkeypress="clickPress(event)">
                 <a id="login_signup" href="login.html">Login/Sign Up</a>
+                <span id="user-info" href="profile.html" style="display: none;"></span> <!-- invisible userInfo -->
             </nav>
             <div class="subheader">
                 <h1>Create Account</h1>
@@ -61,6 +71,7 @@
         </div>
         <footer></footer>
     </div>
+    <script src="myscript.js"></script>
     <script src="signup.js"></script>
 </body>
 </html>

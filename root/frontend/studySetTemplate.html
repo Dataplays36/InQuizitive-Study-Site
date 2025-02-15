@@ -6,6 +6,15 @@
     <title>Inquisitive</title>
     <link rel="stylesheet" href="index.css">
 	<link rel="icon" type="image/jpeg" href="images/beanz.jpg">
+	<style>
+        /* Hide the elements initially 
+        
+            the reason I hide both is to stop the website from flashing "login/signup" when switching tabs
+        */
+        #login_signup, #user-info {
+            display: none;
+        }
+    </style>
 </head>
 <body id="body">
 	<script src="myscript.js"></script>
@@ -16,8 +25,9 @@
 					<li><a href="explore.html">Explore</a></li>
 					<li><a href="about.html">About</a></li>
 				</ul>
-				<input type="text" placeholder="search.." id="searchbar" onkeypress = clickPress(event)>
+				<input type="text" placeholder="search.." id="searchbar" onkeypress="clickPress(event)">
 				<a id="login_signup" href="login.html">Login/Sign Up</a>
+				<span id="user-info" href="profile.html" style="display: none;"></span> <!-- invisible userInfo -->
 			</nav>
 			<div class="subheader" id="studySetName">
 				<h1>Study Set Title</h1>
@@ -43,5 +53,6 @@
 	<footer id="SSfooter">
 		
 	</footer>
+	<script src="myscript.js"></script>
 </body>
 </html>
