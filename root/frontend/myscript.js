@@ -230,10 +230,7 @@ will be moved to it's own file eventually
         }
     }
 
-/*
-    Account and login functions. 
-        might split some of these into different file 
-*/   
+ 
 	/*	haven't touched these yet 
 
     function logout() {
@@ -243,12 +240,17 @@ will be moved to it's own file eventually
     }
 	*/
 
-    // User authentication check: these update with the script
-    // control the following function which decides to display account details
+
+/*
+    Checking if the user is logged in and displaying correct nav button 
+*/    
+
+    // User authentication check: constants which exist if these elements exist
     const loginSignupElement = document.getElementById('login_signup');
     const userInfoElement = document.getElementById('user-info');
+
     //function checking if user logged in and displaying correct button 
-    if (loginSignupElement && userInfoElement) 
+    if (loginSignupElement && userInfoElement) //any page with these things will run this script  
 	{
         fetch('/check-auth')
         .then(response => response.json())
