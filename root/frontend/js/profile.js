@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             .then(message => {
                 alert(message);
                 // Optionally, redirect the user to a different page after logout
-                window.location.href = 'login.html'; 
+                window.location.href = '../html/login.html'; 
             })
             .catch(error => {
                 console.error('Error during logout:', error);
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         .then(data => {
                             console.log(data);
                             if (data === 'Logout successful') {
-                                window.location.href = 'login.html'; // Redirect to signup page after logout
+                                window.location.href = '../html/login.html'; // Redirect to signup page after logout
                             } else {
                                 alert(data); // Display error message
                             }

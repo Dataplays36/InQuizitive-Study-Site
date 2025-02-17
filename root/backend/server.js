@@ -73,7 +73,11 @@ app.use(bodyParser.json());
 */
 
 // Serve static files from the 'frontend' directory
-app.use(express.static(path.join(__dirname, '..', 'frontend')));
+// Serve static files from the "frontend" directory
+app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, '../frontend/html')));
+app.use(express.static(path.join(__dirname, '../frontend/css')));
+app.use(express.static(path.join(__dirname, '../frontend/js')));
 /*
   path.join() creates the file path using following parameters 
     __dirname gets current file directory
@@ -82,6 +86,9 @@ app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
   result: express serves static files (frontend) from the frontend directory
 */  
+
+
+
 
 
 // Connect to MySQL

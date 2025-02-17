@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inquisitive</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/signup.css">
     <link rel="icon" type="image/jpeg" href="images/beanz.jpg">
     <style>
         .outer-container {
@@ -43,34 +44,35 @@
                 </ul>
                 <input type="text" placeholder="search.." id="searchbar" onkeypress="clickPress(event)">
                 <a id="login_signup" href="login.html">Login/Sign Up</a>
-                <a id="user-info" href="profile.html" style="display: none;"></a> <!-- invisible userInfo -->
+                <span id="user-info" href="profile.html" style="display: none;"></span> <!-- invisible userInfo -->
             </nav>
             <div class="subheader">
-                <h1>Login</h1>
+                <h1>Create Account</h1>
             </div>
         </header>
         <div class="content-container">
-            <div id="login">
-                <form id="loginForm">
-                    <label>Username:</label>
+            <div id="signup">
+                <form id="signupForm" method="POST" action="/add-item">
+                    <label for="signup_username">Username:</label>
                     <br><br>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="signup_username" name="username" required>
                     <br><br>
-                    <label>Password:</label>
+                    <label for="signup_password">Password:</label>
                     <br><br>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="signup_password" name="password" required>
                     <br><br>
-                    <button type="submit" id="submit">Login</button>
+                    <button type="submit" id="createAccount" name="submit">Submit</button>
                 </form>
-                <script src="login.js"></script>
                 <br>
                 <p>
-                    Don't have an account? <a href="signup.html">Sign Up</a>
-                </p>              
+                    Already have an account? <a href="login.html">Login</a>
+                </p>
             </div>
         </div>
         <footer></footer>
     </div>
-    <script src="myscript.js"></script>
+    <script src="../js/myscript.js"></script>
+    <script src="../js/signup.js"></script>
+    <script src="../js/searchBar.js"></script>
 </body>
 </html>

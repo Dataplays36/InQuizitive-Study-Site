@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inquisitive</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <link rel="icon" type="image/jpeg" href="images/beanz.jpg">
     <style>
-        /* Hide the elements initially 
+        /* 
+            Hide the elements initially 
         
             the reason I hide both is to stop the website from flashing "login/signup" when switching tabs
         */
@@ -29,18 +31,27 @@
             <a id="user-info" href="profile.html" style="display: none;"></a> <!-- invisible userInfo -->
         </nav>
         <div class="subheader">
-            <h1>Welcome to Inquizitive</h1>
+            <h1>Account Details</h1>
         </div>
-    </header>
+
     <div class="content">
-        <div id="userSets">
-            <h2>View/Edits Your Sets</h2>
+	
+        <div id="user-info-box">
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>User Name:</strong> johnnySins5</p>
         </div>
-        <div id="viewedSets">
-            <h2>Recently Viewed Sets</h2>
+    
+        <div id ="Actions">
+        <button id="deleteAccountBtn">Delete Account</button>
+        <button id="changePasswordBtn">Change Password</button>
+        <button id="logoutBtn">Log Out</button>
         </div>
+        <script src = "../js/profile.js"></script>    
     </div>
+    
+    </header>
     <footer></footer>
-    <script src="myscript.js"></script> 
+    <script src="../js/myscript.js"></script> 
+    <script src="../js/searchBar.js"></script>
 </body>
 </html>

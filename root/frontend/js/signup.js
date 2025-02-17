@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() //makes sure the conten
                 .then(data => {
                     console.log(data);
                     if (data === 'Login successful') {
-                        window.location.href = 'index.html'; // Redirect to home page
+                        window.location.href = '../html/index.html'; // Redirect to home page
                         console.log("login worked")
                     } else {
                         alert(data); // Display error message
